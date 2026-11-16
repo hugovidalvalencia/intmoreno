@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    name="viewport" />
+  <title>Amigo Secreto — Intercambio Moreno</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    rel="stylesheet" />
+  <style>
+    @layer base {
+
+      html,
+      body {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        min-height: 100%;
+        background-color: #f9f9ff;
+      }
+
+      body {
+        overscroll-behavior-y: none;
+        -webkit-tap-highlight-color: transparent;
+        min-height: max(884px, 100dvh);
+      }
+
+      .pb-safe {
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+
+      .pt-safe {
+        padding-top: env(safe-area-inset-top, 0px);
+      }
+    }
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    .fade-in {
+      animation: fadeIn 0.22s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "inverse-on-surface": "#ecf1ff",
+            "primary": "#b80035",
+            "outline-variant": "#e5bdbe",
+            "on-error-container": "#93000a",
+            "surface-container-highest": "#d8e3fb",
+            "error": "#ba1a1a",
+            "on-secondary-container": "#00714d",
+            "surface-dim": "#cfdaf2",
+            "on-surface": "#111c2d",
+            "tertiary-fixed-dim": "#ffb95f",
+            "primary-fixed-dim": "#ffb3b6",
+            "secondary-fixed-dim": "#4edea3",
+            "surface-container-high": "#dee8ff",
+            "tertiary": "#815100",
+            "on-secondary-fixed-variant": "#005236",
+            "on-secondary": "#ffffff",
+            "surface-container-low": "#f0f3ff",
+            "background": "#f9f9ff",
+            "on-tertiary-fixed": "#2a1700",
+            "on-primary-fixed": "#40000c",
+            "outline": "#906f70",
+            "surface-bright": "#f9f9ff",
+            "on-tertiary-container": "#fffaf9",
+            "surface-container": "#e7eeff",
+            "surface": "#f9f9ff",
+            "on-secondary-fixed": "#002113",
+            "on-background": "#111c2d",
+            "tertiary-container": "#a36700",
+            "on-error": "#ffffff",
+            "tertiary-fixed": "#ffddb8",
+            "primary-fixed": "#ffdada",
+            "on-primary": "#ffffff",
+            "on-primary-container": "#fffaf9",
+            "inverse-primary": "#ffb3b6",
+            "primary-container": "#e11d48",
+            "inverse-surface": "#263143",
+            "on-primary-fixed-variant": "#920028",
+            "surface-tint": "#be0037",
+            "secondary-fixed": "#6ffbbe",
+            "surface-container-lowest": "#ffffff",
+            "error-container": "#ffdad6",
+            "on-tertiary": "#ffffff",
+            "on-tertiary-fixed-variant": "#653e00",
+            "surface-variant": "#d8e3fb",
+            "secondary": "#006c49",
+            "secondary-container": "#6cf8bb",
+            "on-surface-variant": "#5c3f40"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "space-lg": "1.5rem",
+            "margin": "1rem",
+            "gutter-desktop": "1.5rem",
+            "margin-desktop": "2rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "gutter": "1rem",
+            "space-xl": "2rem"
+          },
+          fontFamily: {
+            "body-md": ["Nunito Sans", "sans-serif"],
+            "body-sm": ["Nunito Sans", "sans-serif"],
+            "label-sm": ["Nunito Sans", "sans-serif"],
+            "headline-md": ["Nunito Sans", "sans-serif"],
+            "headline-lg": ["Nunito Sans", "sans-serif"],
+            "headline-lg-mobile": ["Nunito Sans", "sans-serif"],
+            "label-md": ["Nunito Sans", "sans-serif"],
+            "headline-xl-mobile": ["Nunito Sans", "sans-serif"],
+            "body-lg": ["Nunito Sans", "sans-serif"],
+            "headline-xl": ["Nunito Sans", "sans-serif"],
+            "label-lg": ["Nunito Sans", "sans-serif"]
+          },
+          fontSize: {
+            "body-md": ["1rem", { "lineHeight": "1.5rem", "fontWeight": "400" }],
+            "body-sm": ["0.875rem", { "lineHeight": "1.25rem", "fontWeight": "400" }],
+            "label-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.04em", "fontWeight": "700" }],
+            "headline-md": ["1.25rem", { "lineHeight": "1.75rem", "fontWeight": "700" }],
+            "headline-lg": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "headline-lg-mobile": ["1.375rem", { "lineHeight": "1.875rem", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "label-md": ["0.875rem", { "lineHeight": "1.25rem", "fontWeight": "600" }],
+            "headline-xl-mobile": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+            "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "fontWeight": "400" }],
+            "headline-xl": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+            "label-lg": ["1rem", { "lineHeight": "1.5rem", "letterSpacing": "0.01em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen">
+
+  <!-- HEADER GLOBAL STICKY -->
+  <header
+    class="fixed top-0 w-full z-50 pt-safe bg-surface/85 backdrop-blur-xl shadow-[0_1px_12px_rgba(30,41,59,0.05)]">
+    <div class="max-w-2xl mx-auto h-16 px-space-md flex items-center justify-between gap-space-sm">
+      <div class="flex items-center gap-space-xs min-w-0">
+        <button id="header-back-btn" aria-label="Regresar" onclick="goBack()"
+          class="hidden w-10 h-10 -ml-1 flex items-center justify-center rounded-full text-on-surface hover:bg-surface-container-high/60 active:scale-95 transition-all">
+          <span class="material-symbols-outlined text-[24px]">arrow_back</span>
+        </button>
+        <div
+          class="w-9 h-9 rounded-full bg-primary-fixed text-primary flex items-center justify-center flex-shrink-0 shadow-sm">
+          <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">redeem</span>
+        </div>
+        <div class="flex flex-col min-w-0 ml-1">
+          <span class="font-label-sm text-label-sm text-primary uppercase tracking-wider truncate">Intercambio
+            Moreno</span>
+          <h1 id="header-title" class="font-headline-md text-headline-md text-on-surface leading-tight truncate">
+            Participantes</h1>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-1.5 flex-shrink-0">
+        <button onclick="openJsonToolsModal()" title="Gestionar JSON manual"
+          class="px-3 h-9 rounded-full bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high flex items-center gap-1 text-label-sm font-label-sm transition-colors">
+          <span class="material-symbols-outlined text-[16px]">data_object</span>
+          <span class="hidden sm:inline">JSON</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENEDOR PRINCIPAL SPA -->
+  <main class="flex-1 flex flex-col relative w-full max-w-2xl mx-auto pt-16 pb-safe px-space-md bg-surface">
+
+    <!-- ==========================================
+         VISTA 1: PANTALLA DE INICIO (PARTICIPANTES)
+         ========================================== -->
+    <section id="view-home" class="flex flex-col w-full pb-28 pt-2 fade-in">
+      <!-- Banner Hero Festivo -->
+      <div class="relative overflow-hidden rounded-3xl bg-surface-container-low p-space-md shadow-sm mb-space-md">
+        <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-primary/10 rounded-full blur-2xl pointer-events-none">
+        </div>
+        <div
+          class="absolute -left-6 -top-6 w-28 h-28 bg-secondary-container/20 rounded-full blur-xl pointer-events-none">
+        </div>
+        <div class="relative z-10 flex flex-col gap-space-xs">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <span
+              class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container text-primary font-label-sm text-label-sm shadow-sm">
+              <span class="material-symbols-outlined text-[15px]"
+                style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+              Amigo Secreto
+            </span>
+            <span
+              class="text-tertiary font-label-sm text-label-sm flex items-center gap-1 bg-tertiary-fixed/60 px-2.5 py-1 rounded-full">
+              <span class="material-symbols-outlined text-[15px]">Celebration</span>
+              Listas Oficiales
+            </span>
+          </div>
+          <h2
+            class="font-headline-xl-mobile text-headline-xl-mobile text-on-surface tracking-tight mt-1 flex items-center gap-2">
+            <span>🎁</span> Nuestro Intercambio
+          </h2>
+          <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Toca el nombre de cualquier participante para ver sus links y notas de regalo, o agrega nuevas opciones.
+          </p>
+        </div>
+      </div>
+
+      <!-- Resumen Rápido (Bento Chips) -->
+      <div class="grid grid-cols-3 gap-2.5 mb-space-md">
+        <div
+          class="flex flex-col items-center justify-center p-3 rounded-2xl bg-surface-container shadow-sm text-center">
+          <div
+            class="w-8 h-8 rounded-full bg-surface-bright flex items-center justify-center mb-1 text-primary shadow-sm">
+            <span class="material-symbols-outlined text-[18px]">group</span>
+          </div>
+          <span id="stat-participants-count"
+            class="font-headline-md text-headline-md text-on-surface font-bold leading-tight">15</span>
+          <span
+            class="font-label-sm text-label-sm text-on-surface-variant text-[11px] truncate w-full">Participantes</span>
+        </div>
+
+        <div
+          class="flex flex-col items-center justify-center p-3 rounded-2xl bg-secondary-container text-on-secondary-container shadow-sm text-center">
+          <div
+            class="w-8 h-8 rounded-full bg-surface-bright flex items-center justify-center mb-1 text-secondary shadow-sm">
+            <span class="material-symbols-outlined text-[18px]">featured_seasonal_and_gifts</span>
+          </div>
+          <span id="stat-wishes-count"
+            class="font-headline-md text-headline-md text-on-secondary-container font-bold leading-tight">66</span>
+          <span class="font-label-sm text-label-sm text-on-secondary-fixed-variant text-[11px] truncate w-full">Opciones
+            totales</span>
+        </div>
+
+        <div
+          class="flex flex-col items-center justify-center p-3 rounded-2xl bg-tertiary-fixed text-on-tertiary-fixed shadow-sm text-center">
+          <div
+            class="w-8 h-8 rounded-full bg-surface-bright flex items-center justify-center mb-1 text-tertiary shadow-sm">
+            <span class="material-symbols-outlined text-[18px]">savings</span>
+          </div>
+          <span class="font-headline-md text-headline-md text-on-tertiary-fixed font-bold leading-tight">$400</span>
+          <span class="font-label-sm text-label-sm text-on-tertiary-fixed-variant text-[11px] truncate w-full">Ref.
+            Base</span>
+        </div>
+      </div>
+
+      <!-- Encabezado de Cuadrícula -->
+      <div class="flex items-center justify-between mb-3 px-1">
+        <div class="flex items-center gap-1.5">
+          <span class="font-label-lg text-label-lg text-on-surface">Personas Registradas</span>
+          <span id="ready-badge"
+            class="px-2.5 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm">15
+            listos</span>
+        </div>
+        <span class="font-label-sm text-label-sm text-on-surface-variant">Toca para abrir</span>
+      </div>
+
+      <!-- CUADRÍCULA DE 3 COLUMNAS DE PARTICIPANTES -->
+      <div id="participants-grid" class="grid grid-cols-3 gap-2.5 sm:gap-3 mb-space-md">
+        <!-- Se llena dinámicamente desde el JSON -->
+      </div>
+
+      <!-- Botón Al Final de la Cuadrícula: Agregar Persona -->
+      <div class="mt-2">
+        <button onclick="showAddPersonView()"
+          class="w-full h-14 rounded-2xl shadow-lg bg-primary-container text-on-primary font-label-lg text-label-lg flex items-center justify-center gap-2 active:scale-[0.98] transition-all hover:opacity-95 shadow-primary/20 cursor-pointer">
+          <span class="material-symbols-outlined text-[22px]">person_add</span>
+          <span>Agregar Persona</span>
+        </button>
+      </div>
+    </section>
+
+
+    <!-- ==========================================
+         VISTA 2: DETALLES DEL PARTICIPANTE (LISTA DE REGALOS)
+         ========================================== -->
+    <section id="view-detail" class="hidden flex-col w-full pb-28 pt-2 fade-in">
+      <!-- Sub-header de navegación contextual -->
+      <div class="flex items-center justify-between py-space-xs mb-space-sm">
+        <button onclick="showHomeView()"
+          class="flex items-center gap-space-xs text-on-surface hover:text-primary active:scale-95 transition-all py-2 px-3.5 rounded-full bg-surface-container-low shadow-sm">
+          <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+          <span class="font-label-md text-label-md font-bold">Regresar a participantes</span>
+        </button>
+        <div
+          class="flex items-center gap-1.5 px-3 py-1 bg-secondary-container/60 text-on-secondary-container rounded-full text-label-sm font-label-sm">
+          <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+          <span>Lista Activa</span>
+        </div>
+      </div>
+
+      <!-- Hero Profile Banner del Participante -->
+      <div class="relative overflow-hidden rounded-2xl bg-surface-container-lowest p-space-md shadow-md mb-space-md">
+        <div class="absolute -right-8 -top-8 w-36 h-36 rounded-full bg-primary/5 pointer-events-none"></div>
+        <div class="absolute -right-2 -bottom-10 w-28 h-28 rounded-full bg-tertiary-fixed-dim/20 pointer-events-none">
+        </div>
+        <div class="flex items-center gap-space-md relative z-10">
+          <!-- Avatar con inicial -->
+          <div class="relative flex-shrink-0">
+            <div id="detail-avatar"
+              class="w-16 h-16 rounded-full shadow-inner bg-primary-fixed text-primary font-headline-xl text-headline-xl flex items-center justify-center font-extrabold">
+              H
+            </div>
+            <div
+              class="absolute -bottom-1 -right-1 bg-primary text-on-primary w-6 h-6 rounded-full flex items-center justify-center shadow-sm">
+              <span class="material-symbols-outlined text-[14px]"
+                style="font-variation-settings: 'FILL' 1;">redeem</span>
+            </div>
+          </div>
+
+          <!-- Info del Participante -->
+          <div class="flex flex-col min-w-0 flex-1">
+            <!-- Modo Visualización del Nombre -->
+            <div id="detail-name-display" class="flex items-center gap-1.5">
+              <h2 id="detail-name" class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface truncate">
+                Lista de Participante</h2>
+              <span class="material-symbols-outlined text-primary text-[20px] flex-shrink-0"
+                style="font-variation-settings: 'FILL' 1;">verified</span>
+              <button type="button" onclick="openEditParticipantName()" title="Editar nombre del participante"
+                aria-label="Editar nombre del participante"
+                class="ml-1 w-8 h-8 rounded-full bg-surface-container hover:bg-primary-fixed text-on-surface-variant hover:text-primary inline-flex items-center justify-center active:scale-90 transition-all cursor-pointer flex-shrink-0">
+                <span class="material-symbols-outlined text-[17px]">edit</span>
+              </button>
+            </div>
+
+            <!-- Modo Edición del Nombre (oculto por defecto) -->
+            <form id="detail-name-edit-form" onsubmit="handleSaveParticipantName(event)"
+              class="hidden items-center gap-1.5 w-full">
+              <input id="input-edit-participant-name" type="text" required
+                class="flex-1 min-w-0 h-10 px-3 rounded-xl bg-surface-container-low text-on-surface font-headline-md text-headline-md focus:outline-none focus:ring-2 focus:ring-primary/40"
+                placeholder="Nombre del participante" />
+              <button type="submit" title="Guardar nombre" aria-label="Guardar nombre"
+                class="w-9 h-9 rounded-xl bg-primary text-on-primary inline-flex items-center justify-center shadow-sm active:scale-90 transition-all cursor-pointer flex-shrink-0">
+                <span class="material-symbols-outlined text-[18px]">check</span>
+              </button>
+              <button type="button" onclick="cancelEditParticipantName()" title="Cancelar" aria-label="Cancelar"
+                class="w-9 h-9 rounded-xl bg-surface-container-high text-on-surface-variant inline-flex items-center justify-center active:scale-90 transition-all cursor-pointer flex-shrink-0">
+                <span class="material-symbols-outlined text-[18px]">close</span>
+              </button>
+            </form>
+
+            <p id="detail-subtitle" class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+              0 opciones de regalo registradas
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Título de Sección -->
+      <div class="flex items-center justify-between mb-space-sm px-1">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary text-[20px]"
+            style="font-variation-settings: 'FILL' 1;">card_giftcard</span>
+          <h3 class="font-headline-md text-headline-md text-on-surface">Tabla de Opciones</h3>
+        </div>
+        <span id="detail-count-pill"
+          class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container px-2.5 py-1 rounded-full">
+          0 opciones
+        </span>
+      </div>
+
+      <!-- TABLA RESPONSIVA DE OPCIONES (# Opción | Link | Notas/Descripción | Acción) -->
+      <div
+        class="w-full rounded-2xl bg-surface-container-lowest shadow-sm overflow-hidden border border-surface-container mb-space-md">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr
+                class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm uppercase border-b border-surface-container">
+                <th class="py-3 px-3 w-20"># Opción</th>
+                <th class="py-3 px-3">Link</th>
+                <th class="py-3 px-3">Notas / Descripción</th>
+                <th class="py-3 px-2 text-center w-24">Acción</th>
+              </tr>
+            </thead>
+            <tbody id="detail-table-body" class="divide-y divide-surface-container text-body-sm">
+              <!-- Filas dinámicas generadas por JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Consejo Amigo Secreto -->
+      <div class="p-space-md rounded-2xl bg-surface-container-high/60 flex items-start gap-3 mb-4">
+        <div
+          class="w-9 h-9 rounded-full bg-secondary text-on-secondary flex items-center justify-center flex-shrink-0 shadow-sm">
+          <span class="material-symbols-outlined text-[20px]">lightbulb</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-label-md text-label-md text-on-surface font-bold">Tip para tu compra</span>
+          <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+            Toca directamente la <strong>URL</strong> para abrir el producto en la tienda, o usa el ícono de
+            <strong>copiar</strong> en la columna de Acción para compartir el enlace.
+          </p>
+        </div>
+      </div>
+
+      <!-- Barra Flotante Inferior con Botón Principal "Agregar Opción de Regalo" -->
+      <div
+        class="fixed bottom-0 left-0 right-0 p-space-md bg-surface/90 backdrop-blur-xl z-40 border-t border-surface-container/60">
+        <div class="max-w-md mx-auto flex flex-col gap-1">
+          <button onclick="showAddGiftView()"
+            class="w-full h-14 bg-primary text-on-primary rounded-2xl font-label-lg text-label-lg shadow-lg shadow-primary/20 flex items-center justify-center gap-2 active:scale-[0.98] transition-all cursor-pointer">
+            <span class="material-symbols-outlined text-[24px]">add_circle</span>
+            <span>Agregar Opción de Regalo</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==========================================
+         VISTA 3: FORMULARIO PARA AGREGAR OPCIÓN DE REGALO
+         ========================================== -->
+    <section id="view-add-gift" class="hidden flex-col w-full pb-16 pt-2 fade-in">
+      <!-- Botón Regresar -->
+      <div class="flex items-center justify-between py-space-xs mb-space-sm">
+        <button type="button" onclick="backToParticipantDetail()"
+          class="flex items-center gap-space-xs text-on-surface hover:text-primary active:scale-95 transition-all py-2 px-3.5 rounded-full bg-surface-container-low shadow-sm">
+          <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+          <span class="font-label-md text-label-md font-bold">Regresar a la página anterior</span>
+        </button>
+      </div>
+
+      <div
+        class="bg-surface-container-lowest rounded-3xl shadow-xl overflow-hidden flex flex-col border border-surface-container">
+        <div
+          class="pt-space-md pb-space-xs px-space-md flex flex-col bg-surface-container-lowest border-b border-surface-container-low">
+          <div class="flex items-center gap-2">
+            <div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+              <span class="material-symbols-outlined text-[22px]">featured_seasonal_and_gifts</span>
+            </div>
+            <div>
+              <span id="add-gift-badge" class="font-label-sm text-label-sm text-primary uppercase">Nuevo Deseo</span>
+              <h2 id="add-gift-heading" class="font-headline-md text-headline-md text-on-surface leading-snug">
+                Estás agregando una opción de regalo para...
+              </h2>
+            </div>
+          </div>
+        </div>
+
+        <form id="form-add-gift" class="p-space-md flex flex-col gap-space-md" onsubmit="handleSaveGift(event)">
+          <!-- Campo 1: Link -->
+          <div class="flex flex-col gap-1.5">
+            <label class="font-label-md text-label-md text-on-surface flex items-center justify-between"
+              for="input-gift-link">
+              <span>Link del regalo (URL o texto) <span class="text-primary font-bold">*</span></span>
+            </label>
+            <div class="relative flex items-center">
+              <div class="absolute left-3.5 text-primary flex items-center pointer-events-none">
+                <span class="material-symbols-outlined text-[20px]">link</span>
+              </div>
+              <input id="input-gift-link" type="text" required placeholder="https://a.co/d/... o nombre de tienda"
+                class="w-full pl-11 pr-4 py-3.5 bg-surface-container-low/60 text-on-surface placeholder:text-outline font-body-md text-body-md rounded-2xl shadow-sm focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/40 outline-none transition-all" />
+            </div>
+            <span class="font-label-sm text-label-sm text-on-surface-variant">Puedes pegar uno o varios links separados
+              por espacio.</span>
+          </div>
+
+          <!-- Campo 2: Título o notas -->
+          <div class="flex flex-col gap-1.5">
+            <label class="font-label-md text-label-md text-on-surface flex items-center gap-1" for="input-gift-notes">
+              <span>Título o notas (Talla, color, detalles)</span>
+            </label>
+            <textarea id="input-gift-notes" rows="3"
+              placeholder="Ej. Talla G, color negro, doy diferencia si se pasa..."
+              class="w-full bg-surface-container-low/60 text-on-surface placeholder:text-outline font-body-md text-body-md py-3 px-4 rounded-2xl shadow-sm focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/40 outline-none transition-all resize-none"></textarea>
+          </div>
+
+          <!-- Acciones -->
+          <div class="flex flex-col gap-2.5 pt-space-xs">
+            <button type="submit"
+              class="w-full bg-primary-container hover:bg-primary text-on-primary-container font-label-lg text-label-lg py-4 rounded-2xl shadow-md shadow-primary-container/20 active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer">
+              <span class="material-symbols-outlined text-[20px]">bookmark_added</span>
+              <span>Guardar</span>
+            </button>
+            <button type="button" onclick="backToParticipantDetail()"
+              class="w-full py-3 rounded-2xl text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low active:scale-98 transition-colors text-center">
+              Cancelar
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+
+    <!-- ==========================================
+         VISTA 4: FORMULARIO PARA AGREGAR PERSONA
+         ========================================== -->
+    <section id="view-add-person" class="hidden flex-col w-full pb-16 pt-2 fade-in">
+      <!-- Botón Regresar -->
+      <div class="flex items-center justify-between py-space-xs mb-space-sm">
+        <button type="button" onclick="showHomeView()"
+          class="flex items-center gap-space-xs text-on-surface hover:text-primary active:scale-95 transition-all py-2 px-3.5 rounded-full bg-surface-container-low shadow-sm">
+          <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+          <span class="font-label-md text-label-md font-bold">Regresar a la página anterior</span>
+        </button>
+      </div>
+
+      <div
+        class="bg-surface-container-lowest rounded-3xl shadow-xl overflow-hidden flex flex-col border border-surface-container">
+        <div
+          class="pt-space-md pb-space-xs px-space-md flex flex-col bg-surface-container-lowest border-b border-surface-container-low">
+          <div class="flex items-center gap-2.5">
+            <div
+              class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+              <span class="material-symbols-outlined text-[22px]">person_add</span>
+            </div>
+            <div>
+              <span class="font-label-sm text-label-sm text-secondary uppercase">Sumar al Intercambio</span>
+              <h2 class="font-headline-md text-headline-md text-on-surface leading-snug">
+                Agregar Nuevo Participante
+              </h2>
+            </div>
+          </div>
+        </div>
+
+        <form id="form-add-person" class="p-space-md flex flex-col gap-space-md" onsubmit="handleSavePerson(event)">
+          <div class="flex flex-col gap-1.5">
+            <label class="font-label-md text-label-md text-on-surface flex items-center gap-1" for="input-person-name">
+              <span>Nombre del participante <span class="text-primary font-bold">*</span></span>
+            </label>
+            <input id="input-person-name" type="text" required placeholder="Ej. Angel del Rock, Dña Vicen..."
+              class="w-full bg-surface-container-low/60 text-on-surface placeholder:text-outline font-body-md text-body-md py-3.5 px-4 rounded-2xl shadow-sm focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/40 outline-none transition-all" />
+            <span class="font-label-sm text-label-sm text-on-surface-variant">Se agregará a la cuadrícula inicial con
+              contador en (0) para poder llenarle deseos.</span>
+          </div>
+
+          <div class="flex flex-col gap-2.5 pt-space-xs">
+            <button type="submit"
+              class="w-full bg-secondary text-on-secondary font-label-lg text-label-lg py-4 rounded-2xl shadow-md shadow-secondary/20 active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer">
+              <span class="material-symbols-outlined text-[20px]">check</span>
+              <span>Guardar</span>
+            </button>
+            <button type="button" onclick="showHomeView()"
+              class="w-full py-3 rounded-2xl text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low active:scale-98 transition-colors text-center">
+              Cancelar
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL DE HERRAMIENTAS JSON MANUAL (Para descargar/restaurar datos.json) -->
+  <div id="json-tools-modal"
+    class="fixed inset-0 z-50 bg-inverse-surface/40 backdrop-blur-sm hidden items-end sm:items-center justify-center p-0 sm:p-4">
+    <div
+      class="w-full max-w-md bg-surface-container-lowest rounded-t-3xl sm:rounded-3xl p-space-md shadow-2xl flex flex-col gap-space-md">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <div class="w-9 h-9 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+            <span class="material-symbols-outlined text-[20px]">data_object</span>
+          </div>
+          <div>
+            <h3 class="font-headline-md text-headline-md text-on-surface">Gestión de Datos JSON</h3>
+            <p class="font-label-sm text-label-sm text-on-surface-variant">100% Manual • Sin servidores externos</p>
+          </div>
+        </div>
+        <button onclick="closeJsonToolsModal()"
+          class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface">
+          <span class="material-symbols-outlined text-[18px]">close</span>
+        </button>
+      </div>
+
+      <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+        Los cambios que haces en la app se guardan automáticamente en este navegador. Si deseas actualizar el archivo
+        <code class="bg-surface-container px-1.5 py-0.5 rounded text-on-surface">datos.json</code> de tu repositorio en
+        GitHub Pages, puedes copiarlo o descargarlo aquí:
+      </p>
+
+      <div class="flex flex-col gap-2">
+        <button onclick="downloadJsonFile()"
+          class="w-full h-12 rounded-xl bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center gap-2 shadow-sm active:scale-95 transition-all">
+          <span class="material-symbols-outlined text-[18px]">download</span>
+          <span>Descargar datos.json actualizado</span>
+        </button>
+        <button onclick="copyJsonToClipboard()"
+          class="w-full h-12 rounded-xl bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center justify-center gap-2 active:scale-95 transition-all">
+          <span class="material-symbols-outlined text-[18px]">content_copy</span>
+          <span>Copiar JSON al portapapeles</span>
+        </button>
+        <button onclick="resetToOriginalJson()"
+          class="w-full h-11 rounded-xl text-error hover:bg-error-container/30 font-label-sm text-label-sm flex items-center justify-center gap-1.5 transition-colors mt-1">
+          <span class="material-symbols-outlined text-[16px]">restart_alt</span>
+          <span>Restaurar datos originales de fábrica</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST DE CONFIRMACIÓN -->
+  <div id="toast-notification"
+    class="fixed bottom-24 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface px-4 py-2.5 rounded-full font-label-md text-label-md shadow-xl flex items-center gap-2 opacity-0 pointer-events-none transition-all duration-300 z-50 whitespace-nowrap">
+    <span id="toast-icon" class="material-symbols-outlined text-secondary-fixed text-[20px]">check_circle</span>
+    <span id="toast-message">Cambio guardado</span>
+  </div>
+
+  <!-- LÓGICA DE LA APLICACIÓN + DATOS REALES INTEGRADOS -->
+  <script>
+    // =========================================================================
+    // 1. BASE DE DATOS INICIAL ESTANDARIZADA (Respaldo directo + datos.json)
+    // =========================================================================
+    const INITIAL_DATA = {
+      exchangeName: "Intercambio Moreno",
+      budget: "$400 MXN",
+      participants: [
+        {
+          id: "jessica",
+          name: "Jessica",
+          wishes: [
+            { id: "j-1", label: "Opción 1", links: ["https://a.co/d/072d7Lxh"], notes: "Opción de Amazon" },
+            { id: "j-2", label: "Opción 2", links: ["https://a.co/d/03iON6b3"], notes: "Opción de Amazon" },
+            { id: "j-3", label: "Opción 3", links: ["https://a.co/d/0dvOm5RQ"], notes: "Opción de Amazon" },
+            { id: "j-4", label: "Opción 4", links: ["https://a.co/d/03mBCvrE"], notes: "Opción de Amazon" },
+            { id: "j-5", label: "Opción 5", links: ["https://a.co/d/0gF5ZaTb"], notes: "Opción de Amazon" },
+            { id: "j-6", label: "Opción 6", links: ["https://a.co/d/012EqBIw"], notes: "Opción de Amazon" }
+          ]
+        },
+        {
+          id: "dani",
+          name: "Dani",
+          wishes: [
+            { id: "d-1", label: "Opción 1", links: ["https://mx.shp.ee/tCyRrmpa"], notes: "Talla G, nombre Pedri, parches de Champions (Pago diferencia)" },
+            { id: "d-2", label: "Opción 2", links: ["https://meli.la/2D9wcp9"], notes: "Opción de Mercado Libre" },
+            { id: "d-3", label: "Opción 3", links: ["https://mx.shp.ee/Cc9uwW2b"], notes: "Solo parche de la Liga MX, Talla G" },
+            { id: "d-4", label: "Opción 4", links: ["https://a.co/d/0gaTiiTr"], notes: "Opción de Amazon" },
+            { id: "d-5", label: "Opción 5", links: ["https://a.co/d/0apjqODA"], notes: "Color negro" }
+          ]
+        },
+        {
+          id: "oswaldo",
+          name: "Oswaldo",
+          wishes: [
+            { id: "o-1", label: "Opción 1", links: ["https://www.tiktok.com/view/product/1734116619278320933"], notes: "Escogiendo modelo: Redmi Note 14 Pro 4G" }
+          ]
+        },
+        {
+          id: "stephania-garcia",
+          name: "Stephania Garcia",
+          wishes: [
+            { id: "s-1", label: "Opción 1", links: ["https://a.co/d/08kmc6FS"], notes: "Puedo dar la diferencia" },
+            { id: "s-2", label: "Opción 2", links: ["https://a.co/d/01kI1Bv2"], notes: "Opción de Amazon" },
+            { id: "s-3", label: "Opción 3", links: ["https://a.co/d/02y2ni9Q"], notes: "Opción de Amazon" }
+          ]
+        },
+        {
+          id: "tia-irene",
+          name: "Tía Irene",
+          wishes: [
+            { id: "ti-1", label: "Opción 1", links: ["https://a.co/d/0bHqrrwe"], notes: "Tono medio" }
+          ]
+        },
+        {
+          id: "rebeca",
+          name: "Rebeca",
+          wishes: [
+            { id: "r-1", label: "Opción 1", links: ["https://a.co/d/0hg2v5cR"], notes: "Opción de Amazon" },
+            { id: "r-2", label: "Opción 2", links: ["https://a.co/d/0im3TryK"], notes: "Opción de Amazon" },
+            { id: "r-3", label: "Opción 3", links: ["https://a.co/d/08KqqXW9"], notes: "Opción de Amazon" },
+            { id: "r-4", label: "Opción 4", links: ["https://a.co/d/03JJUUTO"], notes: "Opción de Amazon" },
+            { id: "r-5", label: "Opción 5", links: ["https://a.co/d/0gpRA2qS"], notes: "Opción de Amazon" },
+            { id: "r-6", label: "Opción 6", links: ["https://a.co/d/0hCFYthB"], notes: "Opción de Amazon" },
+            { id: "r-7", label: "Opción 7", links: ["https://a.co/d/0gYoQj48"], notes: "Opción de Amazon" }
+          ]
+        },
+        {
+          id: "cris",
+          name: "Cris",
+          wishes: [
+            { id: "c-1", label: "Opción 1", links: ["https://a.co/d/04mmMJSJ"], notes: "Opción de Amazon" },
+            { id: "c-2", label: "Opción 2", links: ["https://a.co/d/0i42Mp92"], notes: "Opción de Amazon" },
+            { id: "c-3", label: "Opción 3", links: ["https://www.costco.com.mx/c/ThermoFlask-2-Botellas-Termica-de-Acero-Inoxidable-de-950-mL-Varios-Colores/p/VA1901817"], notes: "ThermoFlask 2 Botellas Térmicas 950 mL — En tienda física Costco están en $399" },
+            { id: "c-4", label: "Opción 4", links: ["https://a.co/d/0b4lPiPN"], notes: "Doy diferencia de $26" },
+            { id: "c-5", label: "Opción 5", links: ["https://a.co/d/0i3aTtTQ"], notes: "Opción de Amazon" },
+            { id: "c-6", label: "Opción 6", links: ["https://a.co/d/0dxtFFsF"], notes: "Opción de Amazon" },
+            { id: "c-7", label: "Opción 7", links: ["https://a.co/d/0dGSmAxz"], notes: "Opción de Amazon" },
+            { id: "c-8", label: "Opción 8", links: ["https://a.co/d/0871Ri3Y"], notes: "Opción de Amazon" },
+            { id: "c-9", label: "Opción 9", links: ["https://a.co/d/0fJk9yvJ"], notes: "Opción de Amazon" },
+            { id: "c-10", label: "Opción 10", links: ["https://www.bodegaaurrera.com.mx/ip/00750611067303"], notes: "Opción en Bodega Aurrera" },
+            { id: "c-11", label: "Opción 11", links: ["https://a.co/d/0hleFVXm"], notes: "Opción de Amazon" },
+            { id: "c-12", label: "Opción 12", links: ["https://vt.tiktok.com/ZS9fb7LndK8nf-L0Wov/"], notes: "Opción de TikTok Shop" }
+          ]
+        },
+        {
+          id: "mario",
+          name: "Mario",
+          wishes: [
+            { id: "m-1", label: "Opción 1", links: ["https://a.co/d/08gunuQg"], notes: "Opción de Amazon" },
+            { id: "m-2", label: "Opción 2", links: ["https://meli.la/1fBFsov"], notes: "Opción de Mercado Libre" },
+            { id: "m-3", label: "Opción 3", links: ["https://a.co/d/0iho6Gk3"], notes: "Opción de Amazon" },
+            { id: "m-4", label: "Opción 4", links: ["https://a.co/d/09dHqyzT"], notes: "Opción de Amazon" }
+          ]
+        },
+        {
+          id: "adri",
+          name: "Adri",
+          wishes: [
+            { id: "a-1", label: "Opción 1", links: ["https://a.co/d/06AqrrGR", "https://a.co/d/0dVcLCEb"], notes: "Combo de 2 artículos en Amazon (Link 1 y Link 2)" },
+            { id: "a-2", label: "Opción 2", links: ["https://a.co/d/0fNU9n1L", "https://a.co/d/0iLyevOf"], notes: "Combo de 2 artículos en Amazon (Link 1 y Link 2)" },
+            { id: "a-3", label: "Opción 3", links: ["https://a.co/d/077Nvf89"], notes: "Opción de Amazon" },
+            { id: "a-4", label: "Opción 4", links: ["https://a.co/d/0chmSYFg", "https://a.co/d/0frJdFVC"], notes: "Combo de 2 artículos en Amazon (Link 1 y Link 2)" }
+          ]
+        },
+        {
+          id: "tia-normi",
+          name: "Tía Normi",
+          wishes: [
+            { id: "tn-1", label: "Opción 1", links: ["https://a.co/d/0cWYSIVE"], notes: "adidas Essentials 3 Franjas Slim Baby Playera Manga Corta Mujer — TALLA: XL" },
+            { id: "tn-2", label: "Opción 2", links: ["https://a.co/d/0dEWCTUd"], notes: "Aeropostale Short Sleeve and Boxer Shorts 2pc PJ Juego de Pijama Mujer — TALLA: XL" },
+            { id: "tn-3", label: "Opción 3", links: ["https://a.co/d/085Mo9VM"], notes: "Champion Pantalones de algodón para Uso Diario (Pantalones Deportivos de Punto con cordón, Parche C, 31.5\") — TALLA: L" }
+          ]
+        },
+        {
+          id: "hugo-bb",
+          name: "Hugo bb",
+          wishes: [
+            { id: "hb-0", label: "Opción 0", links: ["https://a.co/d/07CzbGdl"], notes: "Opción 0 de Amazon" },
+            { id: "hb-1", label: "Opción 1", links: ["https://a.co/d/06eldOue"], notes: "Opción 1 de Amazon" },
+            { id: "hb-2", label: "Opción 2", links: ["https://a.co/d/0ab6kABc", "https://a.co/d/0herXglK"], notes: "Opción 2 (Incluye 2 enlaces de Amazon)" },
+            { id: "hb-3", label: "Opción 3", links: ["https://meli.la/2EHwMn4"], notes: "Opción 3 de Mercado Libre" },
+            { id: "hb-4", label: "Opción 4", links: ["https://a.co/d/0jhYi1qp"], notes: "Opción 4 de Amazon" }
+          ]
+        },
+        {
+          id: "carol",
+          name: "Carol",
+          wishes: [
+            { id: "ca-0", label: "Opción 0", links: ["https://a.co/d/00fjxX3G"], notes: "Color caqui / moradito lila o verde menta" },
+            { id: "ca-1", label: "Opción 1", links: ["https://a.co/d/01TNawe8"], notes: "+ Unos chocolates o accesorios de Michelle" },
+            { id: "ca-2", label: "Opción 2", links: ["https://a.co/d/05qPhnZf"], notes: "+ Unos chocolates Kinder Bueno" },
+            { id: "ca-3", label: "Opción 3", links: ["https://a.co/d/0cHxvScg"], notes: "+ Unos aretes grandes tipo arracada o que sean llamativos de Michelle" },
+            { id: "ca-4", label: "Opción 4", links: ["https://a.co/d/0iLrDgsI"], notes: "+ Unos aretes o pulseras de Michelle" }
+          ]
+        },
+        {
+          id: "memo",
+          name: "Memo",
+          wishes: [
+            { id: "me-1", label: "Opción 1", links: ["https://a.co/d/0d5qlHBc"], notes: "Opción de Amazon" },
+            { id: "me-2", label: "Opción 2", links: ["https://a.co/d/01OGw6Jl"], notes: "Opción de Amazon" },
+            { id: "me-3", label: "Opción 3", links: ["https://a.co/d/0gDkLyG4"], notes: "Opción de Amazon" },
+            { id: "me-4", label: "Opción 4", links: ["https://a.co/d/05urrBFj"], notes: "Opción de Amazon" },
+            { id: "me-5", label: "Opción 5", links: ["https://a.co/d/0euT4mMg"], notes: "Opción de Amazon" },
+            { id: "me-6", label: "Opción 6", links: ["https://www.amazon.com.mx/Care-Bears-Grumpy-Ravenclaw-Divertido/dp/B0FPXRC48H"], notes: "Care Bears Grumpy Ravenclaw (Osito Cariñosito)" }
+          ]
+        },
+        {
+          id: "dna-irma",
+          name: "Dña. Irma (Tía Mimi)",
+          wishes: [
+            { id: "di-0", label: "Opción 0", links: ["https://www.fahorro.com/eucerin-ph5-syndet-gel-de-ducha-libre-de-fragancia-y-jabon-para-rostro-y-cuerpo-ideal-para-piel-seca-y-sensible-400-ml.html"], notes: "Eucerin pH5 Syndet Gel de Ducha 400 ml — (2 piezas)" },
+            { id: "di-1", label: "Opción 1", links: ["https://meli.la/1VJGbZq"], notes: "BPDDKA Camisa de Mujer con Mangas de Mariposa" },
+            { id: "di-2", label: "Opción 2", links: ["https://a.co/d/0c4AW7WH"], notes: "Son dos artículos que suman $417. Pagaré diferencia de $17. ¡Gracias!" }
+          ]
+        },
+        {
+          id: "hugo-padre",
+          name: "Hugo Padre",
+          wishes: [
+            { id: "hp-1", label: "Opción 1", links: ["https://meli.la/1ksrup4"], notes: "Funda + $100 varos en chocolate Lengua de Gato o donas Krispy Kreme" },
+            { id: "hp-2", label: "Opción 2", links: ["https://meli.la/1gU6V3B"], notes: "Almohada + $40 pesos de queso manchego Duno" }
+          ]
+        }
+      ]
+    };
+
+    const STORAGE_KEY = "intercambio_moreno_data_v1";
+    let appData = null;
+    let currentParticipantId = null;
+    let editingWishId = null;
+    let currentView = "home";
+
+    // Paleta de estilos de avatares para alternar en la cuadrícula
+    const AVATAR_STYLES = [
+      "bg-primary-fixed text-primary",
+      "bg-secondary-container text-on-secondary-container",
+      "bg-tertiary-fixed text-tertiary",
+      "bg-surface-container-highest text-primary",
+      "bg-primary-fixed-dim text-on-primary-fixed",
+      "bg-secondary-fixed text-secondary"
+    ];
+
+    // =========================================================================
+    // 2. CARGA Y GUARDADO DE DATOS (JSON local + localStorage)
+    // =========================================================================
+    async function initApp() {
+      const savedLocal = localStorage.getItem(STORAGE_KEY);
+      if (savedLocal) {
+        try {
+          appData = JSON.parse(savedLocal);
+        } catch (e) {
+          console.warn("Error leyendo localStorage, usando JSON base", e);
+        }
+      }
+
+      if (!appData) {
+        try {
+          const response = await fetch("./datos.json", { cache: "no-store" });
+          if (response.ok) {
+            appData = await response.json();
+          } else {
+            appData = JSON.parse(JSON.stringify(INITIAL_DATA));
+          }
+        } catch (err) {
+          // Si se abre con doble clic local (file://), usa INITIAL_DATA embebido
+          appData = JSON.parse(JSON.stringify(INITIAL_DATA));
+        }
+        saveDataToLocal();
+      }
+
+      renderHomeView();
+    }
+
+    function saveDataToLocal() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
+    }
+
+    // =========================================================================
+    // 3. NAVEGACIÓN ENTRE LAS 4 VISTAS DE LA SPA
+    // =========================================================================
+    function switchView(viewName) {
+      currentView = viewName;
+      const views = {
+        "home": document.getElementById("view-home"),
+        "detail": document.getElementById("view-detail"),
+        "add-gift": document.getElementById("view-add-gift"),
+        "add-person": document.getElementById("view-add-person")
+      };
+
+      Object.keys(views).forEach(key => {
+        if (key === viewName) {
+          views[key].classList.remove("hidden");
+          views[key].classList.add("flex");
+        } else {
+          views[key].classList.add("hidden");
+          views[key].classList.remove("flex");
+        }
+      });
+
+      const backBtn = document.getElementById("header-back-btn");
+      const headerTitle = document.getElementById("header-title");
+
+      if (viewName === "home") {
+        backBtn.classList.add("hidden");
+        headerTitle.textContent = "Participantes";
+      } else if (viewName === "detail") {
+        backBtn.classList.remove("hidden");
+        const person = getParticipantById(currentParticipantId);
+        headerTitle.textContent = person ? person.name : "Detalle de Regalo";
+      } else if (viewName === "add-gift") {
+        backBtn.classList.remove("hidden");
+        headerTitle.textContent = editingWishId ? "Editar Opción" : "Agregar Opción";
+      } else if (viewName === "add-person") {
+        backBtn.classList.remove("hidden");
+        headerTitle.textContent = "Agregar Persona";
+      }
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function goBack() {
+      if (currentView === "add-gift") {
+        backToParticipantDetail();
+      } else {
+        showHomeView();
+      }
+    }
+
+    function showHomeView() {
+      currentParticipantId = null;
+      renderHomeView();
+      switchView("home");
+    }
+
+    function openParticipantDetail(participantId) {
+      currentParticipantId = participantId;
+      renderDetailView();
+      switchView("detail");
+    }
+
+    function backToParticipantDetail() {
+      editingWishId = null;
+      if (currentParticipantId) {
+        renderDetailView();
+        switchView("detail");
+      } else {
+        showHomeView();
+      }
+    }
+
+    function showAddGiftView() {
+      const person = getParticipantById(currentParticipantId);
+      if (!person) return;
+      editingWishId = null;
+      document.getElementById("add-gift-badge").textContent = "Nuevo Deseo";
+      document.getElementById("add-gift-heading").textContent =
+        `Estás agregando una opción de regalo para ${person.name}`;
+      document.getElementById("form-add-gift").reset();
+      switchView("add-gift");
+      setTimeout(() => document.getElementById("input-gift-link").focus(), 100);
+    }
+
+    function showEditGiftView(wishId) {
+      const person = getParticipantById(currentParticipantId);
+      if (!person || !Array.isArray(person.wishes)) return;
+      const wish = person.wishes.find(w => w.id === wishId);
+      if (!wish) return;
+
+      editingWishId = wishId;
+      document.getElementById("add-gift-badge").textContent = "Editar Deseo";
+      document.getElementById("add-gift-heading").textContent =
+        `Estás editando una opción de regalo de ${person.name}`;
+
+      const linksArray = Array.isArray(wish.links) && wish.links.length > 0
+        ? wish.links
+        : (wish.link ? [wish.link] : []);
+
+      document.getElementById("input-gift-link").value = linksArray.join(" ");
+      document.getElementById("input-gift-notes").value = wish.notes || "";
+
+      switchView("add-gift");
+      setTimeout(() => document.getElementById("input-gift-link").focus(), 100);
+    }
+
+    function showAddPersonView() {
+      document.getElementById("form-add-person").reset();
+      switchView("add-person");
+      setTimeout(() => document.getElementById("input-person-name").focus(), 100);
+    }
+
+    // =========================================================================
+    // 4. RENDERIZADO DE VISTAS
+    // =========================================================================
+    function getParticipantById(id) {
+      return appData.participants.find(p => p.id === id);
+    }
+
+    function getStoreLabel(url) {
+      const lower = (url || "").toLowerCase();
+      if (lower.includes("a.co") || lower.includes("amazon")) return "Amazon";
+      if (lower.includes("meli.la") || lower.includes("mercadolibre")) return "Mercado Libre";
+      if (lower.includes("shp.ee") || lower.includes("shopee")) return "Shopee";
+      if (lower.includes("tiktok.com")) return "TikTok Shop";
+      if (lower.includes("costco.com")) return "Costco";
+      if (lower.includes("bodegaaurrera")) return "Bodega Aurrera";
+      if (lower.includes("fahorro.com")) return "Farmacias del Ahorro";
+      return "Ver tienda";
+    }
+
+    function renderHomeView() {
+      const grid = document.getElementById("participants-grid");
+      grid.innerHTML = "";
+
+      let totalWishes = 0;
+      appData.participants.forEach(p => {
+        totalWishes += (p.wishes ? p.wishes.length : 0);
+      });
+
+      document.getElementById("stat-participants-count").textContent = appData.participants.length;
+      document.getElementById("stat-wishes-count").textContent = totalWishes;
+      document.getElementById("ready-badge").textContent = `${appData.participants.length} registrados`;
+
+      appData.participants.forEach((person, index) => {
+        const count = person.wishes ? person.wishes.length : 0;
+        const avatarClass = AVATAR_STYLES[index % AVATAR_STYLES.length];
+        const badgeColor = count > 0 ? "bg-primary text-on-primary" : "bg-outline text-white";
+        const initial = person.name.trim().charAt(0).toUpperCase();
+
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "participant-card touch-manipulation min-h-[114px] rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md active:scale-95 transition-all duration-200 flex flex-col items-center justify-center p-2.5 relative text-center group cursor-pointer border border-surface-container/60";
+        btn.onclick = () => openParticipantDetail(person.id);
+
+        btn.innerHTML = `
+          <div class="absolute -top-1.5 -right-1.5 min-w-[22px] h-[22px] px-1.5 rounded-full ${badgeColor} flex items-center justify-center font-label-sm text-label-sm shadow-md ring-2 ring-surface-container-lowest">
+            ${count}
+          </div>
+          <div class="w-12 h-12 rounded-full ${avatarClass} flex items-center justify-center font-headline-md text-headline-md font-bold mb-1.5 shadow-sm group-hover:scale-105 transition-transform">
+            ${escapeHtml(initial)}
+          </div>
+          <span class="font-label-md text-label-md text-on-surface line-clamp-2 w-full leading-tight">
+            ${escapeHtml(person.name)} <span class="text-primary font-bold">(${count})</span>
+          </span>
+        `;
+
+        grid.appendChild(btn);
+      });
+    }
+
+    function renderDetailView() {
+      const person = getParticipantById(currentParticipantId);
+      if (!person) return;
+
+      cancelEditParticipantName();
+
+      const count = person.wishes ? person.wishes.length : 0;
+      document.getElementById("detail-avatar").textContent = person.name.trim().charAt(0).toUpperCase();
+      document.getElementById("detail-name").textContent = person.name;
+      document.getElementById("header-title").textContent = person.name;
+      document.getElementById("detail-subtitle").textContent =
+        `${count} ${count === 1 ? "opción de regalo registrada" : "opciones de regalo registradas"}`;
+      document.getElementById("detail-count-pill").textContent =
+        `${count} ${count === 1 ? "opción" : "opciones"}`;
+
+      const tbody = document.getElementById("detail-table-body");
+      tbody.innerHTML = "";
+
+      if (count === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="4" class="py-10 px-4 text-center text-on-surface-variant">
+              <div class="flex flex-col items-center gap-2">
+                <span class="material-symbols-outlined text-[32px] text-outline">redeem</span>
+                <p class="font-label-md text-label-md text-on-surface">Aún no hay opciones de regalo</p>
+                <p class="font-body-sm text-body-sm">Usa el botón inferior para agregar la primera opción para ${escapeHtml(person.name)}.</p>
+              </div>
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      person.wishes.forEach((wish, idx) => {
+        const tr = document.createElement("tr");
+        tr.className = "hover:bg-surface-container-low/50 transition-colors align-top";
+
+        const optionLabel = wish.label || `Opción ${idx + 1}`;
+        const linksArray = Array.isArray(wish.links) && wish.links.length > 0
+          ? wish.links
+          : (wish.link ? [wish.link] : []);
+
+        const linksHtml = linksArray.map((url) => {
+          const cleanUrl = url.trim();
+          const isUrl = /^https?:\/\//i.test(cleanUrl);
+          if (isUrl) {
+            return `
+              <a href="${escapeAttr(cleanUrl)}" target="_blank" rel="noopener noreferrer"
+                 class="inline-flex items-center gap-1 text-primary hover:underline font-label-sm text-label-sm break-all py-0.5">
+                <span>${escapeHtml(cleanUrl)}</span>
+                <span class="material-symbols-outlined text-[14px] flex-shrink-0">open_in_new</span>
+              </a>
+            `;
+          } else {
+            return `<span class="text-on-surface font-body-sm break-all">${escapeHtml(cleanUrl)}</span>`;
+          }
+        }).join('<div class="h-1.5"></div>');
+
+        const urlToCopy = linksArray.map(u => u.trim()).join(" ");
+
+        tr.innerHTML = `
+          <td class="py-3.5 px-3 font-label-sm text-label-sm text-on-surface whitespace-nowrap">
+            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container text-on-surface">
+              #${idx + 1}
+            </span>
+            <div class="text-[11px] text-on-surface-variant mt-0.5 font-normal">${escapeHtml(optionLabel)}</div>
+          </td>
+          <td class="py-3.5 px-3 max-w-[220px] sm:max-w-xs">
+            <div class="flex flex-col items-start">
+              ${linksHtml || '<span class="text-outline italic">Sin link</span>'}
+            </div>
+          </td>
+          <td class="py-3.5 px-3 font-body-sm text-body-sm text-on-surface-variant leading-snug min-w-[140px]">
+            ${escapeHtml(wish.notes || "Sin notas adicionales")}
+          </td>
+          <td class="py-3.5 px-2 text-center whitespace-nowrap">
+            <div class="inline-flex items-center justify-center gap-0.5">
+              <button type="button" onclick="handleCopyWishUrl('${escapeAttr(urlToCopy)}')" aria-label="Copiar URL" title="Copiar URL"
+                      class="w-8 h-8 rounded-full inline-flex items-center justify-center text-secondary hover:bg-secondary-container/50 active:scale-90 transition-colors cursor-pointer">
+                <span class="material-symbols-outlined text-[18px]">content_copy</span>
+              </button>
+              <button type="button" onclick="showEditGiftView('${escapeAttr(wish.id)}')" aria-label="Editar opción" title="Editar opción"
+                      class="w-8 h-8 rounded-full inline-flex items-center justify-center text-primary hover:bg-primary-fixed/60 active:scale-90 transition-colors cursor-pointer">
+                <span class="material-symbols-outlined text-[18px]">edit</span>
+              </button>
+              <button type="button" onclick="handleDeleteWish('${escapeAttr(wish.id)}')" aria-label="Eliminar opción" title="Eliminar opción"
+                      class="w-8 h-8 rounded-full inline-flex items-center justify-center text-outline hover:text-error hover:bg-error-container/40 active:scale-90 transition-colors cursor-pointer">
+                <span class="material-symbols-outlined text-[19px]">delete</span>
+              </button>
+            </div>
+          </td>
+        `;
+
+        tbody.appendChild(tr);
+      });
+    }
+
+    // =========================================================================
+    // 5. ACCIONES CRUD: AGREGAR OPCIÓN, ELIMINAR OPCIÓN, AGREGAR PERSONA
+    // =========================================================================
+    function handleSaveGift(event) {
+      event.preventDefault();
+      const person = getParticipantById(currentParticipantId);
+      if (!person) return;
+
+      const rawLink = document.getElementById("input-gift-link").value.trim();
+      const rawNotes = document.getElementById("input-gift-notes").value.trim();
+
+      if (!rawLink) {
+        showToast("Por favor ingresa un link", false);
+        return;
+      }
+
+      // Extraer múltiples URLs si pegaron más de una
+      const extractedUrls = rawLink.match(/https?:\/\/[^\s,]+/g);
+      const links = (extractedUrls && extractedUrls.length > 0) ? extractedUrls : [rawLink];
+
+      if (!Array.isArray(person.wishes)) {
+        person.wishes = [];
+      }
+
+      if (editingWishId) {
+        const existingWish = person.wishes.find(w => w.id === editingWishId);
+        if (existingWish) {
+          existingWish.links = links;
+          existingWish.notes = rawNotes || `Opción de ${getStoreLabel(links[0])}`;
+        }
+        editingWishId = null;
+        saveDataToLocal();
+        renderDetailView();
+        switchView("detail");
+        showToast("¡Opción actualizada con éxito!", true);
+        return;
+      }
+
+      const nextNum = person.wishes.length + 1;
+      const newWish = {
+        id: "w-" + Date.now(),
+        label: `Opción ${nextNum}`,
+        links: links,
+        notes: rawNotes || `Opción de ${getStoreLabel(links[0])}`
+      };
+
+      person.wishes.push(newWish);
+      saveDataToLocal();
+
+      renderDetailView();
+      switchView("detail");
+      showToast("¡Opción de regalo guardada!", true);
+    }
+
+    async function handleCopyWishUrl(urlText) {
+      if (!urlText) return;
+      try {
+        await navigator.clipboard.writeText(urlText);
+        showToast("URL copiada al portapapeles", true);
+      } catch (e) {
+        // Fallback por si el navegador bloquea clipboard API
+        const tempInput = document.createElement("input");
+        tempInput.value = urlText;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempInput);
+        showToast("URL copiada al portapapeles", true);
+      }
+    }
+
+    function handleDeleteWish(wishId) {
+      const person = getParticipantById(currentParticipantId);
+      if (!person || !Array.isArray(person.wishes)) return;
+
+      person.wishes = person.wishes.filter(w => w.id !== wishId);
+      saveDataToLocal();
+      renderDetailView();
+      showToast("Opción eliminada de la lista", false);
+    }
+
+    function openEditParticipantName() {
+      const person = getParticipantById(currentParticipantId);
+      if (!person) return;
+
+      const displayEl = document.getElementById("detail-name-display");
+      const formEl = document.getElementById("detail-name-edit-form");
+      const inputEl = document.getElementById("input-edit-participant-name");
+
+      inputEl.value = person.name;
+      displayEl.classList.add("hidden");
+      formEl.classList.remove("hidden");
+      formEl.classList.add("flex");
+      setTimeout(() => {
+        inputEl.focus();
+        inputEl.select();
+      }, 50);
+    }
+
+    function cancelEditParticipantName() {
+      const displayEl = document.getElementById("detail-name-display");
+      const formEl = document.getElementById("detail-name-edit-form");
+      if (!displayEl || !formEl) return;
+
+      formEl.classList.add("hidden");
+      formEl.classList.remove("flex");
+      displayEl.classList.remove("hidden");
+    }
+
+    function handleSaveParticipantName(event) {
+      event.preventDefault();
+      const person = getParticipantById(currentParticipantId);
+      if (!person) return;
+
+      const inputEl = document.getElementById("input-edit-participant-name");
+      const newName = inputEl.value.trim();
+
+      if (!newName) {
+        showToast("El nombre no puede estar vacío", false);
+        return;
+      }
+
+      person.name = newName;
+      saveDataToLocal();
+      renderDetailView();
+      showToast("¡Nombre del participante actualizado!", true);
+    }
+
+    function handleSavePerson(event) {
+      event.preventDefault();
+      const nameInput = document.getElementById("input-person-name");
+      const name = nameInput.value.trim();
+
+      if (!name) {
+        showToast("Escribe el nombre del participante", false);
+        return;
+      }
+
+      const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, "-") + "-" + Date.now().toString().slice(-4);
+      const newParticipant = {
+        id: slug,
+        name: name,
+        wishes: []
+      };
+
+      appData.participants.push(newParticipant);
+      saveDataToLocal();
+
+      showHomeView();
+      showToast(`¡${name} agregado(a) con (0) opciones!`, true);
+    }
+
+    // =========================================================================
+    // 6. UTILIDADES PARA GESTIÓN MANUAL DE DATOS.JSON Y UI
+    // =========================================================================
+    function openJsonToolsModal() {
+      const modal = document.getElementById("json-tools-modal");
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+    }
+
+    function closeJsonToolsModal() {
+      const modal = document.getElementById("json-tools-modal");
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+    }
+
+    function downloadJsonFile() {
+      const dataStr = JSON.stringify(appData, null, 2);
+      const blob = new Blob([dataStr], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "datos.json";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      closeJsonToolsModal();
+      showToast("Archivo datos.json descargado", true);
+    }
+
+    async function copyJsonToClipboard() {
+      try {
+        await navigator.clipboard.writeText(JSON.stringify(appData, null, 2));
+        closeJsonToolsModal();
+        showToast("JSON copiado al portapapeles", true);
+      } catch (e) {
+        showToast("No se pudo copiar automáticamente", false);
+      }
+    }
+
+    function resetToOriginalJson() {
+      localStorage.removeItem(STORAGE_KEY);
+      appData = JSON.parse(JSON.stringify(INITIAL_DATA));
+      saveDataToLocal();
+      closeJsonToolsModal();
+      showHomeView();
+      showToast("Datos originales restaurados", true);
+    }
+
+    function showToast(message, isSuccess = true) {
+      const toast = document.getElementById("toast-notification");
+      const toastMsg = document.getElementById("toast-message");
+      const toastIcon = document.getElementById("toast-icon");
+      if (!toast) return;
+
+      toastMsg.textContent = message;
+      toastIcon.textContent = isSuccess ? "check_circle" : "delete_sweep";
+      toast.classList.remove("opacity-0", "pointer-events-none");
+      toast.classList.add("opacity-100");
+
+      setTimeout(() => {
+        toast.classList.add("opacity-0", "pointer-events-none");
+        toast.classList.remove("opacity-100");
+      }, 2500);
+    }
+
+    function escapeHtml(str) {
+      return String(str || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function escapeAttr(str) {
+      return escapeHtml(str);
+    }
+
+    // Iniciar aplicación
+    window.addEventListener("DOMContentLoaded", initApp);
+  </script>
+</body>
+
+</html>
