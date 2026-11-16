@@ -937,29 +937,36 @@
       return APP_BASE_PATH ? `${APP_BASE_PATH}/` : "/";
     }
 
-    async function initApp() {
-      const savedLocal = localStorage.getItem(STORAGE_KEY);
-      if (savedLocal) {
-        try {
-          appData = JSON.parse(savedLocal);
-        } catch (e) {
-          console.warn("Error leyendo localStorage, usando JSON base", e);
-        }
+    async function fetchLatestJsonData() {
+      const jsonUrl = (APP_BASE_PATH ? `${APP_BASE_PATH}/datos.json` : "/datos.json") + "?t=" + Date.now();
+      const response = await fetch(jsonUrl, { cache: "no-store" });
+      if (response.ok) {
+        return await response.json();
       }
+      const relResponse = await fetch("./datos.json?t=" + Date.now(), { cache: "no-store" });
+      if (relResponse.ok) {
+        return await relResponse.json();
+      }
+      throw new Error("No se pudo cargar datos.json");
+    }
 
-      if (!appData) {
-        try {
-          const response = await fetch("./datos.json", { cache: "no-store" });
-          if (response.ok) {
-            appData = await response.json();
-          } else {
+    async function initApp() {
+      // 1. Siempre consultar primero datos.json actualizado del servidor
+      try {
+        appData = await fetchLatestJsonData();
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
+      } catch (err) {
+        // 2. Respaldo si se abre sin servidor (file://)
+        const savedLocal = localStorage.getItem(STORAGE_KEY);
+        if (savedLocal) {
+          try {
+            appData = JSON.parse(savedLocal);
+          } catch (e) {
             appData = JSON.parse(JSON.stringify(INITIAL_DATA));
           }
-        } catch (err) {
-          // Si se abre con doble clic local (file://), usa INITIAL_DATA embebido
+        } else {
           appData = JSON.parse(JSON.stringify(INITIAL_DATA));
         }
-        saveDataToLocal();
       }
 
       const initialSegment = detectBasePathAndInitialSegment();
@@ -1030,8 +1037,36 @@
       }
     });
 
-    function saveDataToLocal() {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
+    async function saveDataToLocal() {
+      const jsonStr = JSON.stringify(appData, null, 2);
+      localStorage.setItem(STORAGE_KEY, jsonStr);
+
+      // 1. Intentar guardar con guardar.php (para servidores con PHP como inter.noqlabsdemos.com)
+      try {
+        const phpUrl = APP_BASE_PATH ? `${APP_BASE_PATH}/guardar.php` : "/guardar.php";
+        const phpRes = await fetch(phpUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json; charset=utf-8" },
+          body: jsonStr
+        });
+        if (phpRes.ok) {
+          return;
+        }
+      } catch (err) {
+        // Si no hay PHP activo (ej. corriendo en el servidor local PowerShell), pasar al paso 2
+      }
+
+      // 2. Respaldo para nuestro servidor de desarrollo local (PUT directo a datos.json)
+      try {
+        const targetUrl = APP_BASE_PATH ? `${APP_BASE_PATH}/datos.json` : "/datos.json";
+        await fetch(targetUrl, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json; charset=utf-8" },
+          body: jsonStr
+        });
+      } catch (err) {
+        // Respaldo final en localStorage
+      }
     }
 
     // =========================================================================
